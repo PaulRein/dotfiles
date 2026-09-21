@@ -1,4 +1,0 @@
- #autoload -U
- #vim: set ft=zsh
- #
-/bin/ls -lndotT "${(@f)$(mdimport -L |& sed -n -e 's/ *"\(.*\)",/\1/p')}"

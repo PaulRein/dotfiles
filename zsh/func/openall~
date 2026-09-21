@@ -1,6 +1,0 @@
-#autoload -U
-#vim: set ft=zsh
-#
-# Given a text file, extract all URLs and open them.
-
-extract_url -l $1 |gxargs -r open

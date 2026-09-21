@@ -1,6 +1,14 @@
 #!/bin/bash
 
 ########
+# zsh #
+########
+ln -sf "$HOME/dotfiles/zshrc" "$HOME/.zshrc"
+ln -sf "$HOME/dotfiles/zshenv" "$HOME/.zshenv"
+rm -rf "$HOME/.zsh"
+ln -s "$HOME/dotfiles/zsh" "$HOME/.zsh"
+
+########
 # nvim #
 ########
 mkdir -p "$HOME/.config/nvim"

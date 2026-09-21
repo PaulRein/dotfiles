@@ -11728,3 +11728,12 @@ end
 : 1789986449:0;git status
 : 1789986472:0;gvim install.sh
 : 1789986606:0;cp -r ~/.zsh zsh
+: 1789986607:0;ll
+: 1789986615:0;git add zsh
+: 1789986635:0;git rm --cached zsh/spaceship-vi-mode
+: 1789986649:0;git status
+: 1789986676:0;ll
+: 1789986681:0;cd zsh
+: 1789986683:0;ll
+: 1789986690:0;rm -rf cache
+: 1789986730:0;cp -r ~/.zsh/cache/ .
