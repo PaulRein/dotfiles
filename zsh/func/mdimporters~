@@ -1,0 +1,4 @@
+ #autoload -U
+ #vim: set ft=zsh
+ #
+echo "${(@f)$(mdimport -L |& sed -n -e 's/ *"\(.*\)",/\1/p')}"

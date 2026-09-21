@@ -1,0 +1,6 @@
+#autoload -U
+#vim: set ft=zsh
+#
+# Given two lists, displays the set-intersection (i.e. the common elements). Can also be used to test for disjointness (= empty intersection).
+
+comm -12 =(sort $1) =(sort $2)

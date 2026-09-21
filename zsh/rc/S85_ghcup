@@ -1,0 +1,3 @@
+if [[ -f /Users/paulrein/.ghcup/env ]] ; then
+	source /Users/paulrein/.ghcup/env
+fi

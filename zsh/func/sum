@@ -1,0 +1,10 @@
+#autoload -U
+#vim: set ft=zsh
+
+local SUM=0 NUM LINE
+while read LINE; do
+        for NUM in ${=LINE} ; do
+                [[ -n $NUM ]] && SUM=$(($SUM+$NUM))
+        done
+done
+echo $SUM

@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+# adding 'cdpath' like this:
+#    typeset -U path cdpath manpath fpath
+# results in these messages:
+#    Insecure $ENV{CDPATH} while running with -t switch at /usr/bin/rm line 110.
+#    Insecure dependency in system while running with -t switch at /usr/bin/rm line 110.
+
+

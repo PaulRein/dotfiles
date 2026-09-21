@@ -1,0 +1,38 @@
+#autoload -U
+#vim: set ft=zsh
+
+#
+
+[[ -z $HOSTNAME ]] && HOSTNAME=$(hostname)
+
+if ! [[ $TERM = screen* || $TERMCAP =~ "screen" || $SSH_AUTH_SOCK =~ '\.screen/' ]] ; then
+        echo >&2 "Not running in screen."
+        return 1
+fi
+
+local file=$(echo ~/.display.$HOSTNAME)
+if ! [[ -f $file ]] ; then
+        echo >&2 "No DISPLAY file $file"
+        return 1
+fi
+
+local -a text
+text=( $(head -n1 $file) )
+if ! [[ $text =~ "^DISPLAY=(.*)" ]] ; then
+        echo >&2 "No DISPLAY match in $file"
+        return 1
+fi
+
+local disp=${match[1]}
+if ! [[ -n $disp ]] ; then
+        echo >&2 "No DISPLAY text in $file"
+        return 1
+fi
+
+export DISPLAY="$disp"
+echo >&2 "DISPLAY=$DISPLAY"
+return 0
+
+
+
+

@@ -1,0 +1,9 @@
+#autoload -U
+#vim: set ft=zsh
+
+# Autload every function in my .zsh/func/ directory
+for file in ~/.zsh/func/*[^~] ; do
+        local name=${file##*/}
+        unfunction $name
+        autoload -U $name
+done

@@ -1,0 +1,4 @@
+#autoload -U
+#vim: set ft=zsh
+#
+alias | a2ps -o alias.ps -MA4 -s2 -Asheet -E -1 --delegate=no

@@ -1,0 +1,116 @@
+#!/bin/zsh
+
+# this keeps duplicates from PATH, CDPATH, MANPATH, and FPATH
+typeset -U path manpath fpath
+
+
+if [[ x"$HOME" = x ]] ; then
+    export HOME=$(cd ~ ; pwd)
+fi
+
+if [[ x"$HOSTNAME" = x ]] ; then
+    export HOSTNAME=$(hostname)
+fi
+
+if [[ -f /etc/default/locale ]] ; then
+    source /etc/default/locale
+    export LANG LANGUAGE
+fi
+
+export EMAIL="Paul.Reinerfelt@esss.se"
+export FULLNAME="Paul Reinerfelt"
+
+export MANWIDTH=120
+export EDITOR=vim
+export VISUAL=vim
+
+#export MANSECT=2:3:7:1:4:5:6:8:9
+
+export INPUTRC="~/.inputrc"
+
+# Define locale preferences
+unset LC_ALL
+export LANGUAGE=en_GB@oxendict:en_GB-oxendict:en_GB-oed:en_US:sv
+export LANG=en_GB.UTF-8@OED
+export LC_CTYPE=sv_SE.UTF-8
+export LC_NUMERIC=sv_SE.UTF-8
+export LC_TIME=sv_SE.UTF-8
+export LC_COLLATE=sv_SE.UTF-8
+export LC_MONETARY=sv_SE.UTF-8
+export LC_MESSAGES=sv_SE.UTF-8
+export LC_PAPER=sv_SE.UTF-8
+export LC_NAME=sv_SE.UTF-8
+export LC_ADDRESS=sv_SE.UTF-8
+export LC_TELEPHONE=sv_SE.UTF-8
+export LC_MEASUREMENT=sv_SE.UTF-8
+export LC_IDENTIFICATION=sv_SE.UTF-8
+# These two affect locale warnings so they go here as well
+export PERL_BADLANG=0
+export MAN_NO_LOCALE_WARNING=1
+
+# Tell Python that we accept utf-8
+export PYTHONIOENCODING=utf-8
+
+if ( which brew >/dev/null 2>/dev/null ) ; then
+    # Add these lines (or adjust them)
+    BREW_PREFIX=`brew --prefix`
+    export PATH=$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$PATH
+    export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+    export HOMEBREW_GITHUB_API_TOKEN='3b638082b6af521ca115ebc7c39620dee132099d'
+    # Set a named directory for the Cellar
+    export cellar=/usr/local/Cellar
+fi
+
+# path junk
+
+if [ $UID -eq 0 ]; then
+    PATH=~root/bin:$PATH
+else
+    path=(${HOME}/bin ${HOME}/usr/bin $path)
+fi
+
+if [[ -d /usr/texbin ]] then
+    PATH=/usr/texbin:$PATH
+fi
+
+path=(/usr/local/bin $path /bin:/usr/bin /sbin:/usr/sbin /usr/local/sbin /usr/X11R6/bin)
+
+# zsh functions
+fpath=($HOME/.zsh/func $fpath)
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+# less options
+export LESS=gJMRSX
+export LESSCHARSET=utf-8
+unset LESSOPEN
+
+export CLICOLORS=1
+
+# this makes man pages look nicer...
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+
+# For the benefit of the scala interpreter, 2008-10-14
+if [[ $(uname) == 'Darwin' ]] then
+    export JAVA_OPTS="-Xmx1024M -Xms32M -Dapple.awt.graphics.UseQuartz=true"
+fi
+# Setting correct text-encoding in Java
+export JAVA_TOOL_OPTIONS='-Dfile.encoding=UTF8 -Duser.language=en -Duser.region=GB'
+
+# Make Chrome and Firefox dump their session-keys
+export SSLKEYLOGFILE=/Users/paulrein/slask/premaster.txt
+
+# Set the path to NetPBM's color definition file.
+if ( which ppmchange >/dev/null 2>/dev/null ) ; then
+	export RGBDEF=/usr/local/opt/netpbm/misc/rgb.txt
+fi
+
+# Set colourized dir-listings
+if [[ -e $HOME/.dir_color ]] then
+	eval $(gdircolors $HOME/.dir_color)
+fi

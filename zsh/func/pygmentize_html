@@ -1,0 +1,4 @@
+#autoload -U
+#vim: set ft=zsh
+
+pygmentize -g -f html -O wrap,style=tango,full=true,title="${1:t}",wrapcode -o ${1:r}.html $1

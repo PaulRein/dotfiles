@@ -1,0 +1,6 @@
+#autoload -U
+#vim: set ft=zsh
+#
+# Given two lists, displays the set-union (i.e. the combined elements). 
+
+sort $* | uniq

@@ -1,0 +1,4 @@
+#autoload -U
+#vim: set ft=zsh
+#
+functions |sed -e '/^zsh_/,/^}/ d' |sed -e '/^_/,/^}/d' |sed -e '/^VCS/,/^}/d' |sed -e '/^zrecompile/,/^}/d'|sed -e '/^compaudit/,/^}/d'|sed -e '/^compdef/,/^}/d'|sed -e '/^compdump/,/^}/d'|sed -e '/^compgen/,/^}/d'|sed -e '/^compinit/,/^}/d'|sed -e '/^compinstall/,/^}/d' |sed -e '/^complete/,/^}/d' | a2ps -o functions.ps -MA4 -s2 -Asheet -E -1 --delegate=no

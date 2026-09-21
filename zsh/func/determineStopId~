@@ -1,0 +1,1 @@
+curl -s https://tram.ess.eu/gtfsdata/stops.txt |xsv search -s stop_name "$1" | xsv search -s location_type 1

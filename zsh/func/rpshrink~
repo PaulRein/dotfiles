@@ -1,0 +1,14 @@
+#autoload -U
+#vim: set ft=zsh
+#
+# Shrinks a Raspberry Pi imagefile to minimum size. 
+#
+# Usage: rpshrink large.img small.img
+
+docker run --rm \
+	-it \
+	-v "$(pwd)":/work-dir \
+	--device=/dev/loop0:/devloop0:rw \
+	--cap-add=SYS_ADMIN \
+	--name shrink \
+	paulrein/raspbian-shrink "$@"

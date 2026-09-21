@@ -1,0 +1,41 @@
+# Find python file
+alias pyfind='find . -name "*.py"'
+
+# Remove python compiled byte-code in either current directory or in a
+# list of specified directories
+function pyclean() {
+    ZSH_PYCLEAN_PLACES=${*:-'.'}
+    find ${ZSH_PYCLEAN_PLACES} -type f -name "*.py[co]" -delete
+    find ${ZSH_PYCLEAN_PLACES} -type d -name "__pycache__" -delete
+}
+
+# Grep among .py files
+alias pygrep='grep --include="*.py"'
+
+if [[ -d /usr/local/opt/python/Frameworks/Python.framework/Versions/Current/bin ]] then
+	PATH=/usr/local/opt/python/Frameworks/Python.framework/Versions/Current/bin:$PATH
+fi
+ 
+if [[ -d /usr/local/opt/python3/Frameworks/Python.framework/Versions/3.8/bin ]] then
+	PATH=/usr/local/opt/python3/Frameworks/Python.framework/Versions/3.8/bin:$PATH
+fi
+ 
+if [[ -d /usr/local/opt/python/libexec/bin ]] then
+	PATH=/usr/local/opt/python/libexec/bin:$PATH
+fi
+ 
+if [[ -d $(python3 -m site --user-base)/bin ]] then
+	PATH=$(python3 -m site --user-base)/bin:$PATH
+fi
+
+path=($path /Library/Frameworks/Python.framework/Versions/3.13/bin)
+
+export PYENV_ROOT=/usr/local/var/pyenv
+
+# if ( which pyenv > /dev/null 2>/dev/null ); then eval "$(pyenv init -)"; fi
+
+export PIPENV_SHELL_EXPLICIT=/usr/local/opt/zsh/bin/zsh
+
+export PY_PYTHON=3.12
+export PY_PYTHON3=3.12
+
