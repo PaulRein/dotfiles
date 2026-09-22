@@ -1,0 +1,4 @@
+amsmath.vba: call delete('/Users/paulrein/.vim/after/syntax/tex/amsmath.vim')
+array.vba: call delete('/Users/paulrein/.vim/after/syntax/tex/array.vim')
+lstlisting.vba: call delete('/Users/paulrein/.vim/after/syntax/tex/lstlisting.vim')
+moreverb.vba: call delete('/Users/paulrein/.vim/after/syntax/tex/moreverb.vim')

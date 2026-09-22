@@ -1,12 +1,19 @@
 #!/bin/bash
 
-########
+#######
 # zsh #
-########
+#######
 ln -sf "$HOME/dotfiles/zshrc" "$HOME/.zshrc"
 ln -sf "$HOME/dotfiles/zshenv" "$HOME/.zshenv"
 rm -rf "$HOME/.zsh"
 ln -s "$HOME/dotfiles/zsh" "$HOME/.zsh"
+
+#######
+# vim #
+#######
+rm -rf "$HOME/.vim"
+ln -s "$HOME/dotfiles/vim" "$HOME/.vim"
+ln -sf "$HOME/dotfiles/vimrc" "$HOME/.vimrc"
 
 ########
 # nvim #
