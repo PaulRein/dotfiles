@@ -1,0 +1,48 @@
+[ui]
+username = Paul Reinerfelt <Paul.Reinerfelt@gmail.com>
+
+[auth]
+dmsc.prefix = hg.esss.dk/ad/
+dmsc.username = paulreinerfelt
+dmsc.password = northbathefiletfreycarte
+dmsc.schemes = http https
+
+
+[extensions]
+color =
+extdiff =
+graphlog =
+beautifygraph =
+pager =
+hgext.convert=
+flow = /Users/paulrein/.mercurial/plugins/hgflow.py
+#flow = ~/.hgext/hgflow.py
+mq =
+hggithub =
+
+[alias]
+lga = glog --style=/Users/paulrein/bin/map-cmdline.lg
+# Nuke everything in the working copy
+nuke = !hg up -C . && hg clean
+
+[pager]
+#pager = LESS='FSRX' less
+pager = diff-so-fancy | less --tabs=4 -RFX
+attend = cat, diff, glog, log, incoming, outgoing, lg, show, lga
+
+[flow]
+autoshelve = yes
+
+
+[web]
+#cacerts = /etc/hg-dummy-cert.pem
+
+[extdiff]
+cmd.echodiff = hg_echo
+opts.echodiff = $root $plabel1 $clabel $parent $child
+cmd.diffpp = hg_diffpp
+opts.diffpp = $root $plabel1 $clabel $parent $child
+
+[github]
+username = paulrein
+

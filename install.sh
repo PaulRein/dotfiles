@@ -15,6 +15,13 @@ rm -rf "$HOME/.vim"
 ln -s "$HOME/dotfiles/vim" "$HOME/.vim"
 ln -sf "$HOME/dotfiles/vimrc" "$HOME/.vimrc"
 
+#############
+# mercurial #
+#############
+rm -rf "$HOME/.hgext"
+ln -s "$HOME/dotfiles/hgrc" "$HOME/.hgext"
+ln -sf "$HOME/dotfiles/hgrc" "$HOME/.hgrc"
+
 ########
 # nvim #
 ########
